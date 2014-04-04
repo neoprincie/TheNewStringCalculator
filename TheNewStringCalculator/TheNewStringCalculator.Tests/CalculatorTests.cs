@@ -18,7 +18,6 @@ namespace TheNewStringCalculator.Tests
         public void TestBaseCase()
         {
             var input = "1";
-
             var result = evaluator.Calculate(input);
 
             Assert.That(result, Is.EqualTo(1));
@@ -28,7 +27,6 @@ namespace TheNewStringCalculator.Tests
         public void TestNegativeBaseCase()
         {
             var input = "-1";
-
             var result = evaluator.Calculate(input);
 
             Assert.That(result, Is.EqualTo(-1));
@@ -42,10 +40,15 @@ namespace TheNewStringCalculator.Tests
         [TestCase("1*(2+4)", 6)]
         [TestCase("2*(3+2*3)", 18)]
         [TestCase("(3+(5-2))*2", 12)]
+        [TestCase("6%2", 0)]
+        [TestCase("7%2", 1)]
+        [TestCase("14123%7", 4)]
+        [TestCase("1445233123%77", 26)]
+        [TestCase("3^4", 81)]
+        [TestCase("4+3^4*2", 166)]
         public void TestRecursiveCase(String expression, Double expected)
         {
             var result = evaluator.Calculate(expression);
-
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -55,7 +58,6 @@ namespace TheNewStringCalculator.Tests
         public void TestAddingNegatives(String expression, Double expected)
         {
             var result = evaluator.Calculate(expression);
-
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -63,7 +65,6 @@ namespace TheNewStringCalculator.Tests
         public void TestMultipleExpression()
         {
             var input = "1+2*4";
-
             var result = evaluator.Calculate(input);
 
             Assert.That(result, Is.EqualTo(9));

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calculator</title>
+</head>
+<body>
+    <canvas id="calculator">Guess you can't calculate.  You need HTML5!</canvas>
+
+    <script>
+        var canvas = document.getElementById('calculator');
+        var context = canvas.getContext("2d");
+        var rectGradient = context.createLinearGradient(0, 0, 0, 170);
+        rectGradient.addColorStop(0, "blue");
+        rectGradient.addColorStop(1, "red");
+        context.fillStyle = rectGradient;
+        context.fillRect(grid().gridWidth, 50, 200, 100);
+
+
+        function grid() {
+            var gridWidth = 400;
+            var gridHeight = gridWidth * (5 / 4);
+            var squareWidth = gridWidth / 4;
+            var X = 0;
+        }
+        
+    </script>
+</body>
+</html>

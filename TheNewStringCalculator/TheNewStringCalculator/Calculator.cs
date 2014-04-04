@@ -9,6 +9,11 @@ namespace TheNewStringCalculator
 
         public Calculator()
         {
+            ConfigureOperators();
+        }
+
+        private void ConfigureOperators()
+        {
             operators = new Dictionary<String, Func<Double, Double, Double>>();
             operators.Add("^", (x, y) => Math.Pow(x, y));
             operators.Add("*", (x, y) => x * y);
@@ -21,7 +26,6 @@ namespace TheNewStringCalculator
         public Double Calculate(String expression)
         {
             var expressionWithoutParentheses = EvaluateAnyParentheses(expression);
-            
             return Evaluate(expressionWithoutParentheses);
         }
 
@@ -60,9 +64,7 @@ namespace TheNewStringCalculator
             Double num;
 
             if (Double.TryParse(expression, out num))
-            {
                 return num;
-            }
             else
             {
                 expression = expression.Replace("--", "+");
